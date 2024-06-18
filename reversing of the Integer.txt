@@ -1,0 +1,26 @@
+class Solution {
+    public int reverse(int x) {
+        long num=0;
+        if(x>0){
+            while(x>0){
+                num*=10;
+                num+=x%10;
+                x=x/10;
+            }
+        }else{
+            int t=Math.abs(x);
+            while(t>0){
+                num*=10;
+                num+=t%10;
+                t=t/10;
+            }
+            num=num*(-1);
+        }
+
+        if(num<Math.pow(-2,31) || num>Math.pow(2,31)){
+            return 0;
+        }
+        System.out.println(Math.pow(2,31)-1);
+        return (int)num;
+    }
+}

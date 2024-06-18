@@ -1,0 +1,47 @@
+import java.util.*;
+import java.lang.*;
+
+class Duplicate{
+    public Duplicate(){};
+    public int isTheDuplicate(int[] nums){
+        int len=nums.length;
+        int[] arr=new int[len];
+        
+        int k=0;
+        
+        for(int i=0;i<len;i++){
+            boolean isDuplicate=false;
+            for(int j=i+1;j<len;j++){
+                if(nums[i]==nums[j]){
+                    isDuplicate=true;
+                    break;
+                }
+                
+            }
+            if(!isDuplicate){
+                arr[k++]=nums[i];
+            }
+        }
+        return k;
+    }
+    
+}
+
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Duplicate d=new Duplicate();
+        int n=sc.nextInt();
+        
+        int[] nums=new int[n];
+        
+        for(int i=0;i<n;i++){
+            nums[i]=sc.nextInt();
+        }
+        
+        System.out.println(d.isTheDuplicate(nums));
+        
+
+    }
+}

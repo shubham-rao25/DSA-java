@@ -1,0 +1,31 @@
+import java.util.*;
+import java.lang.*;
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        int min=Integer.MAX_VALUE;
+        String check="";
+        String commonPrefix="";
+        for(int i=0;i<strs.length;i++){
+            min=Math.min(min,strs[i].length());
+        }
+        for(int i=0;i<strs.length;i++){
+            if(strs[i].length()==min){
+                check=strs[i];
+            }
+        }
+        System.out.println(check);
+        int k=check.length();
+        for(int i=0;i<check.length();i++){
+            for(int j=0;j<strs.length;j++){
+                if(!strs[j].startsWith(check.substring(0,k))){
+                    k--;
+                    break;
+                }
+            }
+            commonPrefix=check.substring(0,k);
+        }
+       return commonPrefix;
+    }
+}
+
+//leetcode problem 14

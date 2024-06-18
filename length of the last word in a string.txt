@@ -1,0 +1,17 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+// 		System.out.println("Hello World");
+        String str="Hello world";
+        
+        String[] stri=str.split(" ");
+        
+        System.out.println(Arrays.toString(stri));
+        char[] cha=stri[stri.length-1].toCharArray();
+        System.out.println(Arrays.toString(cha));
+        int n=cha.length;
+        System.out.println(n);
+	}
+}

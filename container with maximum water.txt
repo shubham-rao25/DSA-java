@@ -1,0 +1,39 @@
+//optimal solution with O(n)
+
+class Solution {
+    public int maxArea(int[] height) {
+        int max=0;
+        int left=0;
+        int right=height.length-1;
+        while(left<right){
+            int area=Math.min(height[left],height[right])*(right-left);
+            max=Math.max(max,area);
+            if(height[right]>height[left]){
+                left++;
+            }else{
+                right--;
+            }
+        }
+        return max;
+    }
+}
+
+//brute force solution O(n^2) using two for loops
+class Solution {
+    public int maxArea(int[] height) {
+        int max=0;
+        for(int i=0;i<height.length;i++){
+            for(int j=i+1;j<height.length;j++){
+                int min=(height[i]>height[j]?height[j]:height[i]);
+                int distance=j-i;
+                int area=distance*min;
+                if(area>max){
+                    max=area;
+                }
+            }
+        }
+        return max;
+    }
+}
+
+//leetcode problem  11

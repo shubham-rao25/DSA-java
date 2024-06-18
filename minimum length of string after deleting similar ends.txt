@@ -1,0 +1,30 @@
+class Solution {
+    public int minimumLength(String s) {
+         int count = Integer.MAX_VALUE;
+        int l = 0;
+        int r = s.length() - 1;
+
+        while (l < r) {
+            if (s.charAt(l) == s.charAt(r)) {
+                char ch1 = s.charAt(l);
+                char ch = s.charAt(r);
+                l++;
+                r--;
+
+                while (l <= r && s.charAt(l) == ch1) {
+                    l++;
+                }
+                while (l <= r && s.charAt(r) == ch) {
+                    r--;
+                }
+            } else {
+                count = Math.min(count, r - l + 1);
+                break;
+            }
+        }
+
+        return Math.min(count, r - l + 1);
+    }
+}
+
+//leetcode problem 1750

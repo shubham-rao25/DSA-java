@@ -1,0 +1,36 @@
+class Solution {
+    public int pivotInteger(int n) {
+        int prefix=1;
+        int suffix=n;
+        
+        int l=2;
+        int r=n-1;
+        while(l<=r){
+            if(prefix<suffix){
+                prefix+=l;
+                l++;
+            }else if(prefix>suffix){
+                suffix+=r;
+                r--;
+            }else{
+                prefix+=l;
+                suffix+=r;
+            }
+        }
+
+        if(prefix==suffix){
+            return l;
+        }
+        return -1;
+    }
+}
+//leetcode problem 2485
+//alternative solution
+class Solution {
+    public int pivotInteger(int n) {
+        int y = n*(n+1)/2;
+        int x = (int)Math.sqrt(y);
+        if(x*x==y) return x;
+        else return -1;
+    }
+}

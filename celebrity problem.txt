@@ -1,0 +1,37 @@
+import java.util.*;
+import java.util.*;
+
+class Celebrity{
+    public int find(int[][] arr,int n){
+        int candidate=0;
+        for(int i=0;i<n;i++){
+            if(arr[candidate][i]==1){
+                candidate=i;
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(i!=candidate &&(arr[i][candidate]==0)||(arr[candidate][i]==1)){
+                return -1;
+            }
+        }
+        return candidate;
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        Celebrity cel=new Celebrity();
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        
+        int[][] matrix=new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+        
+        int CelebrityId= cel.find(matrix,n);
+        System.out.println(CelebrityId);
+    }
+}

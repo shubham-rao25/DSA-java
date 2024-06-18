@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+
+class TreeNode{
+    int value;
+    TreeNode right;
+    TreeNode left;
+    public TreeNode(int val){
+        this.value=val;
+        this.right=null;
+        this.left=null;
+    }
+}
+class binaryTree{
+    public void preOrderTraversal(TreeNode root){
+        if(root==null){
+            return;
+        }
+        
+        preOrderTraversal(root.left);
+        
+        preOrderTraversal(root.right);
+        
+        System.out.print(root.value+" ");
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        TreeNode root=new TreeNode(1);
+        root.left=new TreeNode(2);
+        root.left.left=new TreeNode(4);
+        root.left.right=new TreeNode(5);
+        root.right=new TreeNode(3);
+        root.right.right=new TreeNode(6);
+        binaryTree bt=new binaryTree();
+        bt.preOrderTraversal(root);
+    }
+}

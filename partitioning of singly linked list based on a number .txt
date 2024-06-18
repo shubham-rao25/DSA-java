@@ -1,0 +1,111 @@
+import java.util.*;
+import java.lang.*;
+
+class Node{
+    public int value;
+    public Node next;
+    public Node prev;
+}
+
+class LinkedList{
+    public Node head;
+    public Node tail;
+    public int size;
+    
+    
+    public void creation(int nodeValue){
+        Node node = new Node();
+        node.value=nodeValue;
+        node.next=null;
+        head=node;
+        tail=node;
+        size=1;
+    }
+    
+    public void insertion(int nodeValue){
+        Node newNode=new Node();
+        newNode.value=nodeValue;
+        newNode.next=null;
+        tail.next=newNode;
+        tail=newNode;
+        size++;
+    }
+    
+    public void traversal(){
+        Node temp=head;
+        for(int i=0;i<size;i++){
+            System.out.print(temp.value);
+            if(i!=size-1){
+                
+                System.out.print("->");
+            }
+            temp=temp.next;
+        }
+    }
+}
+
+class Question{
+    public LinkedList partition(LinkedList ll, int a){
+        int len=ll.size;
+        Node temp=ll.head;
+        ArrayList<Integer> less=new ArrayList<Integer>();  //creating ArrayList to add elements that are less, equal, and more
+        ArrayList<Integer> equal=new ArrayList<Integer>();
+        ArrayList<Integer> more=new ArrayList<Integer>();
+        for(int i=0;i<len;i++){
+            if(temp.value<a){
+                less.add(temp.value);
+            }else if(temp.value==a){
+                equal.add(temp.value);
+            }else{
+                more.add(temp.value);
+            }
+            temp=temp.next;
+        }
+        LinkedList finallist=new LinkedList();  // creation of a new linkedList
+        for(int i=0;i<less.size();i++){
+            if(finallist.head==null){
+                finallist.creation(less.get(i));
+            }else{
+                finallist.insertion(less.get(i));
+            }
+        }
+        for(int i=0;i<equal.size();i++){
+            if(finallist.head==null){
+                finallist.creation(equal.get(i));
+            }else{
+                finallist.insertion(equal.get(i));
+            }
+        }
+        for(int i=0;i<more.size();i++){
+            if(finallist.head==null){
+                finallist.creation(more.get(i));
+            }else{
+                finallist.insertion(more.get(i));
+            }
+        }
+        return finallist;
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        LinkedList ll=new LinkedList();
+        ll.creation(1);
+        ll.insertion(2);
+        ll.insertion(10);
+        ll.insertion(5);
+        ll.insertion(19);
+        ll.insertion(11);
+        ll.insertion(9);
+            ll.insertion(10);
+                ll.insertion(22);
+        ll.traversal();
+        System.out.println();
+        System.out.println("enter the element on which partition is to be made: ");
+        int n=sc.nextInt();
+        Question q= new Question();
+        LinkedList result=q.partition(ll,n);  //result being the type LinkedList is having all the function that LinkedList class consist
+        result.traversal();
+    }
+}

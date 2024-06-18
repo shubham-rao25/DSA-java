@@ -1,0 +1,27 @@
+import java.util.HashSet;
+
+public class Solution {
+    public static int[] findMissingRepeatingNumbers(int []a) {
+        // Write your code here
+        int[] arr=new int[2];
+        HashSet<Integer> hs=new HashSet<>();
+        for(int i=0;i<a.length;i++){
+            if(hs.contains(a[i])){
+               arr[0]= a[i];
+            }else{
+                hs.add(a[i]);
+            }
+        }
+        int len=a.length;
+        int total= (len*(len+1))/2;
+
+        int to=0;
+        for(int n:hs){
+            to+=n;
+        }
+
+        int second=total-to;
+        arr[1]=second;
+        return arr;
+    }
+}

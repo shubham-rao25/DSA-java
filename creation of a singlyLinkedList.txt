@@ -1,0 +1,36 @@
+import java.util.*;
+import java.lang.*;
+
+
+class Node{
+    public int value;
+    public Node next;
+}
+
+class singleLinkedList{
+    public Node head;
+    public Node tail;
+    public int size;
+    
+    
+    public Node creation(int nodeValue){
+        head=new Node();
+        Node node=new Node();
+        node.next=null;
+        node.value=nodeValue;
+       
+        head=node;
+        tail=node;
+        size=1;
+        
+        return head;
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        singleLinkedList sll=new singleLinkedList();
+        sll.creation(10);
+        System.out.println(sll.head.value);
+    }
+}

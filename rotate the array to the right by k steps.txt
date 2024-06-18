@@ -1,0 +1,21 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int[] a=new int[nums.length];
+        int j=0;
+        int l = nums.length - k % nums.length; // Adjust k if it's larger than the length of the array
+        
+        
+        for(int i=l;i<nums.length;i++){
+            a[j++]=nums[i];
+        }
+        for(int i=0;i<l;i++){
+            a[j++]=nums[i];
+        }
+        // System.out.println(Arrays.toString(a));
+
+        for(int i=0;i<nums.length;i++){
+            nums[i]=a[i];
+        }
+        
+    }
+}

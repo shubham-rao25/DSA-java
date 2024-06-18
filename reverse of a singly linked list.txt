@@ -1,0 +1,80 @@
+import java.util.*;
+import java.lang.*;
+
+class Node{
+    public int value;
+    public Node next;
+    public Node prev;
+}
+
+class LinkedList{
+    public Node head;
+    public Node tail;
+    public int size;
+    
+    public void creation(int nodeValue){
+        Node node=new Node();
+        node.value=nodeValue;
+        node.next=null;
+        head=node;
+        tail=node;
+        size=1;
+    }
+    
+    public void insertion(int nodeValue){
+        Node newNode=new Node();
+        newNode.value=nodeValue;
+        newNode.next=null;
+        tail.next=newNode;
+        tail=newNode;
+        size++;
+    }
+    
+    public void traversal(){
+        Node temp=head;
+        for(int i=0;i<size;i++){
+            System.out.print(temp.value);
+            if(i!=size-1){
+                System.out.print("->");
+            }
+            temp=temp.next;
+        }
+    }
+    
+}
+
+class Reverse{
+    public void reverseLinkedList(LinkedList ll){
+        int len=ll.size-1;
+        
+        for(int i=len;i>=0;i--){
+            Node temp=ll.head;
+            for(int j=0;j<i;j++){
+                temp=temp.next;
+            }
+            System.out.print(temp.value+" ");
+        }
+        
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        LinkedList ll=new LinkedList();
+        ll.creation(1);
+        ll.insertion(2);
+        ll.insertion(3);
+        ll.insertion(4);
+        ll.insertion(5);
+        ll.insertion(6);
+        ll.insertion(7);
+        ll.insertion(8);
+       
+        // ll.traversal();
+        // Middle m=new Middle();
+        // int data=m.middleElement(ll);
+        Reverse r=new Reverse();
+        r.reverseLinkedList(ll);
+        // System.out.println(data);
+    }
+}

@@ -1,0 +1,79 @@
+import java.util.*;
+import java.lang.*;
+
+//implementation of stack using array
+
+class Stack{
+    public int[] arr;
+    public int topOfStack;
+    
+    public Stack(int size){
+        arr=new int[size];
+        topOfStack=-1;
+    }
+    
+    public boolean isEmpty(){
+        if(topOfStack==-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public boolean isFull(){
+        if(topOfStack==arr.length-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public int peek(){
+        if(isEmpty()){
+            return -1;
+        }
+        return arr[topOfStack];
+    }
+    
+    public void push(int val){
+        if(isEmpty()){
+            ++topOfStack;
+            arr[topOfStack]=val;
+        }else{
+            if(!isFull()){
+                ++topOfStack;
+                arr[topOfStack]=val;
+            }else{
+                System.out.println("the stack is full");
+            }
+        }
+    }
+    
+    public int pop(){
+        int popEle=0;
+        if(isEmpty()){
+            return -1;
+        }else{
+            popEle=arr[topOfStack];
+            topOfStack--;
+        }
+        return popEle;
+    }
+    
+}
+
+public class Main{
+    public static void main(String[] args){
+        Stack s=new Stack(4);
+        s.push(2);
+        s.push(4);
+        s.push(6);
+        s.push(8);
+        s.push(10);
+        System.out.println(s.peek());
+        // System.out.println(s.pop());
+        System.out.println(s.peek());
+         System.out.println(s.isFull());
+        
+    }
+}

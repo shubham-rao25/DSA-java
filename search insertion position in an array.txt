@@ -1,0 +1,43 @@
+import java.util.*;
+import java.lang.*;
+
+
+public class Main{
+    public static void main(String[] args){
+        int[] n={1};
+        int target=-45;
+        boolean found=false;
+        int len=n.length;
+        
+        if(len==1){
+            if(target==n[0]){
+                System.out.println(0);
+            }else if(target==0 || target<n[0]){
+                System.out.println(0);
+            }
+            
+            else{
+                System.out.println(1);
+            }
+        }else{
+        for(int i=0;i<len;i++){
+            if(target==n[i]){
+                System.out.println(i);
+                found=true;
+                break;
+            }
+        }
+        }
+        if(found==false){
+            for(int i=0;i<len-1;i++){
+                if(target>n[len-1]){
+                    System.out.println(len);
+                    break;
+                }
+                else if(target>n[i] && target<n[i+1]){
+                    System.out.println(i+1);
+                }
+            }
+        }
+    }
+}

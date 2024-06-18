@@ -1,0 +1,39 @@
+//Intersection of two different arrays.
+
+import java.util.*;
+import java.lang.*;
+
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter the length of first array:");
+        int n1=sc.nextInt();
+        int[] arr1=new int[n1];
+        for(int i=0;i<n1;i++){
+            arr1[i]=sc.nextInt();
+        }
+        System.out.println("enter the length of second array:");
+        int n2=sc.nextInt();
+        int[] arr2=new int[n2];
+        for(int i=0;i<n2;i++){
+            arr2[i]=sc.nextInt();
+        }
+        
+        int len=(n1>n2)?n1:n2;
+        
+        int [] final_arr= new int[len];
+        int k=0;
+        for(int i=0;i<n1;i++){
+            for(int j=0;j<n2;j++){
+                if(arr1[i]==arr2[j]){
+                    final_arr[k++]=arr1[i];
+                }else{
+                    continue;
+                }
+            }
+        }
+        for(int i=0;i<k;i++){
+        System.out.print(final_arr[i]+" ");}
+    }
+}

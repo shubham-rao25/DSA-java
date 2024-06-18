@@ -1,0 +1,56 @@
+
+import java.util.*;
+import java.lang.*;
+
+class MinStack{
+    
+    Stack<Integer> stack; //stack to store the elements
+    Stack<Integer> minStack; //stack to keep the track of the minimum element
+    public MinStack(){  //constructor of the class
+        stack=new Stack<>();
+        minStack=new Stack<>();
+    }
+    public void push(int value){
+        stack.push(value); //push onto main stack
+        if(minStack.isEmpty()||value<=minStack.peek()){
+            minStack.push(value);
+        }
+    }
+    public void pop(){
+        if(!stack.isEmpty()){
+            int popItem=stack.pop();
+            if(popItem==minStack.peek()){
+                minStack.pop();
+            }
+        }
+    }
+    
+    public int top(){
+        if(!stack.isEmpty()){
+            return stack.peek();
+        }
+        return -1;
+    }
+    public int getMin(){
+        if(!minStack.isEmpty()){
+            return minStack.peek();
+        }
+        return -1;
+    }
+        
+    
+}
+
+
+public class Main{
+    public static void main(String[] args){
+        MinStack stack=new MinStack(); //create an object of class MinStack that consist both the stacks ie minstack and mainstack
+        stack.push(5);
+        stack.push(2);
+        stack.push(7);
+        stack.push(3);
+        int minElement=stack.getMin();
+        System.out.println(minElement);
+        
+    }
+}

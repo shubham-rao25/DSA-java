@@ -1,0 +1,35 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode temp=head;
+        HashSet<Integer> hs=new HashSet<>();
+        while(temp!=null){
+            hs.add(temp.val);
+            temp=temp.next;
+        }
+        ListNode dummyHead=new ListNode(0);
+        ListNode yo=dummyHead;
+        int[] arr=new int[hs.size()];
+        
+        int i=0;
+        for(int n:hs){
+            arr[i++]=n;
+        }
+        Arrays.sort(arr);
+        for(int n:arr){
+            yo.next=new ListNode(n);
+            yo=yo.next;
+        }
+        return dummyHead.next;
+    }
+}
+//leetcode problem 83

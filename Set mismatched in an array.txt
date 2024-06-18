@@ -1,0 +1,34 @@
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int[] arr=new int[2];
+        HashSet<Integer> h=new HashSet<>();
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        // System.out.println(Arrays.toString(nums));
+        int num=0;
+        
+        for(int n:nums){
+            hs.put(n,hs.getOrDefault(n,0)+1);
+        }
+        for(int n:nums){
+            if(hs.get(n)==2){
+                num=n;
+            }
+        }
+        arr[0]=num;
+        for(int i=0;i<nums.length;i++){
+            h.add(nums[i]);
+        }
+        // System.out.println(num);
+        int ss=0;
+        for(int i=1;i<nums.length+1;i++){
+            if(!h.contains(i)){
+                ss=i;
+            }
+        }
+        arr[1]=ss;
+        // System.out.println(ss);
+        return arr;
+    }
+}
+
+//leetcode problem 645

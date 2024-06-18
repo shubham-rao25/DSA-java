@@ -1,0 +1,33 @@
+class Solution {
+    public int bagOfTokensScore(int[] tokens, int power) {
+        Arrays.sort(tokens);
+        // System.out.println(Arrays.toString(tokens));
+        int i=0;int j=tokens.length-1;
+        int count=0;
+        int max=0;
+        
+        
+        while(i<=j){
+            if(tokens[i]<=power){ //if conditions.
+             power-=tokens[i];
+             
+             i++;
+             count++;
+             max=Math.max(max,count);
+            }else if(count>0){  //if condition not satisfied then this condition
+                power+=tokens[j];
+                
+                j--;
+                count--;
+                
+            }else{
+                break;
+            }
+        }
+        
+        return max;
+    }
+}
+
+
+//leetcode problem 948

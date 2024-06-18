@@ -1,0 +1,85 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+import java.lang.*;
+
+class Node{
+    public int value;
+    public Node next;
+    public Node prev;
+}
+
+
+class LinkedList{
+    public Node head;
+    public Node tail;
+    public int size;
+    
+    void creation(int nodeValue){
+        Node node=new Node();
+        node.value=nodeValue;
+        node.next=null;
+        head=node;
+        tail=node;
+        size=1;
+    }
+    
+    void insertion(int nodeValue){
+        Node newNode=new Node();
+        newNode.value=nodeValue;
+        newNode.next=null;
+        tail.next=newNode;
+        tail=newNode;
+        size++;
+    }
+    
+    void traversal(){
+        Node temp=head;
+        for(int i=0;i<size;i++){
+            System.out.print(temp.value);
+            if(i!=size-1){
+                System.out.print("-->");
+            }
+            temp=temp.next;
+        }
+    }
+}
+public class Main
+{
+    public static void loopDetect(LinkedList ll){
+        HashSet <Node> h=new HashSet<Node>();
+        Node temp= ll.head;
+        int len=ll.size;
+        while(temp!=null){
+            if(h.contains(temp)){
+                System.out.print("loop detected");
+                return;
+            }
+            h.add(temp);
+            temp=temp.next;
+        }
+      System.out.println("loop not detected");
+    }
+	public static void main(String[] args) {
+        LinkedList ll=new LinkedList();
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            int val=sc.nextInt();
+            if(ll.head==null){
+                
+                ll.creation(val);
+            }else{
+                ll.insertion(val);
+            }
+        }
+        ll.head.next.next.next.next=ll.head;
+        ll.traversal();
+        loopDetect(ll);
+	}
+}

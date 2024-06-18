@@ -1,0 +1,39 @@
+class Solution {
+    
+    public String longestPalindrome(String s) {
+        int max=0;
+       
+        if(isPalidrome(s)){
+            return s;
+        }
+        String ans="";
+        for(int i=0;i<s.length();i++){
+            for(int j=i+1;j<s.length()+1;j++){
+                if(isPalidrome(s.substring(i,j))){
+                    if(s.substring(i,j).length()>max){
+                        ans=s.substring(i,j);
+                        max=s.substring(i,j).length();
+                    }
+                }
+            }
+        }
+        return ans;
+        
+    }
+
+    public boolean isPalidrome(String str){
+       
+        int s=0;
+        int e=str.length()-1;
+        while(s<e){
+            if(str.charAt(s)!=str.charAt(e)){
+                return false;
+            }
+            s++;
+            e--;
+        }
+        return true;
+    } 
+}
+
+//leetcode problem 5

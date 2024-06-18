@@ -1,0 +1,34 @@
+import java.util.*;
+import java.lang.*;
+class Solution{
+    public int majorityElement(int[] arr){
+        int len=arr.length;
+        int number=0;
+        for(int i=0;i<len;i++){
+            int major=0;
+            for(int j=0;j<len;j++){
+                if(arr[i]==arr[j]){
+                    major++;
+                }
+            }
+            if(major>(len/2)){
+                number=arr[i];
+            }
+        }
+        return number;
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        Solution sol=new Solution();
+        int[] num={2,2,1,3};
+        
+        int n=sol.majorityElement(num);
+        System.out.println(n);
+    }
+}
+
+//or can use
+//Arrays.sort(arr;
+//int n=arr.length;
+//return arr[n/2];

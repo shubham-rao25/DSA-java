@@ -1,0 +1,32 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        
+        ArrayList<Integer> ar=new ArrayList<>();
+        for(int i=0;i<matrix.length;i++){
+            
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==0){
+                    ar.add(i);
+                    ar.add(j);
+                }
+            }
+
+        }
+
+        int size=ar.size();
+        int i=0;
+        while(i<size){
+            if(i%2==0){
+                for(int j=0;j< matrix[0].length;j++){
+                    matrix[ar.get(i)][j]=0;
+                }
+            }else{
+                for(int j=0;j< matrix.length;j++){
+                    matrix[j][ar.get(i)]=0;
+                }
+            }
+            i++;
+        }
+        System.out.println(Arrays.deepToString(matrix));
+    }
+}

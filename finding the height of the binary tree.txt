@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+
+class TreeNode{
+    int value;
+    TreeNode right;
+    TreeNode left;
+    public TreeNode(int val){
+        this.value=val;
+        this.right=null;
+        this.left=null;
+    }
+}
+class binaryTree{
+    
+    public int heightOfTree(TreeNode root){
+        if(root==null){
+            return -1;
+        }
+        
+        int l=heightOfTree(root.left) ;
+        int r=heightOfTree(root.right);
+        
+        l=Math.max(l,r);
+        return l+1;
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        TreeNode root=new TreeNode(1);
+        root.left=new TreeNode(2);
+        root.left.left=new TreeNode(4);
+        root.left.right=new TreeNode(5);
+        root.left.left.left=new TreeNode(5);
+
+        root.left.left.right=new TreeNode(5);
+
+        root.right=new TreeNode(3);
+        root.right.right=new TreeNode(6);
+        binaryTree bt=new binaryTree();
+       
+        int n=bt.heightOfTree(root);
+        System.out.println("height of the given tree:"+n);
+    }
+}

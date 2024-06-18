@@ -1,0 +1,77 @@
+import java.lang.*;
+import java.util.*;
+
+class Node{
+    public int value;
+    public Node next;
+    public Node prev;
+}
+
+class LinkedList{
+    public Node head;
+    public Node tail;
+    public int size;
+    
+    public void creation(int data){
+        Node node=new Node();
+        node.value=data;
+        node.next=null;
+        head=node;
+        tail=node;
+        size=1;
+    }
+    public void insertInto(int data){
+        Node newNode=new Node();
+        newNode.value=data;
+        newNode.next=null;
+        tail.next=newNode;
+        tail=newNode;
+        size++;
+    }
+    public void traversal(){
+        Node tempNode=head;
+        for(int i=0;i<size;i++){
+            System.out.print(tempNode.value);
+            if(i!=(size-1)){
+                System.out.print("->");
+            }
+            tempNode=tempNode.next;
+        }
+    }
+    
+    
+}
+class removeDups{
+    public void deleteLL(LinkedList ll){
+        Node currentNode=ll.head;
+        Node prev=null;
+        HashSet<Integer> hs=new HashSet();
+        while(currentNode.next!=null){
+            int curval=currentNode.value;
+            if(hs.contains(curval)){
+                prev.next=currentNode.next;
+                ll.size--;
+            }else{
+                hs.add(curval);
+                prev=currentNode;
+            }
+            currentNode=currentNode.next;
+        }
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        LinkedList ll=new LinkedList();
+        ll.creation(1);
+        ll.insertInto(2);
+        ll.insertInto(3);
+        ll.insertInto(2);
+        ll.insertInto(5);
+        ll.traversal();
+        removeDups rd=new removeDups();
+        rd.deleteLL(ll);
+        System.out.println("");
+        ll.traversal();
+    }
+}

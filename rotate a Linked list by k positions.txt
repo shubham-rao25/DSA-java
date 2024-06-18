@@ -1,0 +1,70 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        ArrayList<Integer> arr1=new ArrayList<>();
+        ArrayList<Integer> arr2=new ArrayList<>();
+        ListNode dummyHead=new ListNode(0);
+        ListNode h=dummyHead;
+        ListNode temp=head;
+        int count=0;
+        if(head==null){
+            return head;
+        }
+        
+        while(temp!=null){
+            count++;
+            temp=temp.next;
+        }
+       
+        
+        if(k<count){
+            ListNode tem=head;
+            ListNode tem1=head;
+            for(int i=0;i<(count-k);i++){
+                tem=tem.next;
+            }
+            for(int i=0;i<k;i++){
+                h.next=new ListNode(tem.val);
+                h=h.next;
+                tem=tem.next;
+            }
+            for(int i=0;i<(count-k);i++){
+                h.next=new ListNode(tem1.val);
+                h=h.next;
+                tem1=tem1.next;
+            }
+        }
+        if(k>count){
+            k=k%count;
+            ListNode tem=head;
+            ListNode tem1=head;
+            for(int i=0;i<(count-k);i++){
+                tem=tem.next;
+            }
+            for(int i=0;i<k;i++){
+                h.next=new ListNode(tem.val);
+                h=h.next;
+                tem=tem.next;
+            }
+            for(int i=0;i<(count-k);i++){
+                h.next=new ListNode(tem1.val);
+                h=h.next;
+                tem1=tem1.next;
+            }
+        }
+        if(k==count){
+            return head;
+        }
+        return dummyHead.next;
+    }
+
+}

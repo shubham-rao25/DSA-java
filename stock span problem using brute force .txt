@@ -1,0 +1,36 @@
+import java.util.*;
+import java.lang.*;
+
+
+class Solution{
+    public int[] stockSpan(int[] stockPrice){
+        int len=stockPrice.length;
+        int[] span=new int[len];
+        span[0]=1;
+        
+        for(int i=0;i<len;i++){
+            span[i]=1;
+            int j=i-1;
+            while(j>=0 && stockPrice[i]>=stockPrice[j]){
+                span[i]++;
+                j--;
+            }
+        }
+        return span;
+    }
+}
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Solution sol=new Solution();
+        int n=sc.nextInt();
+        int[] stockPrice=new int[n];
+        
+        for(int i=0;i<n;i++){
+            stockPrice[i]=sc.nextInt();
+        }
+        
+        int[] span=sol.stockSpan(stockPrice);
+        System.out.println(Arrays.toString(span));
+    }
+}

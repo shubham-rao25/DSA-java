@@ -1,0 +1,86 @@
+import java.util.*;
+import java.lang.*;
+
+class Node{
+    public int value;
+    public Node next;
+    public Node prev;
+}
+
+class LinkedList{
+    public Node head;
+    public Node tail;
+    public int size;
+    
+    public void creation(int nodeValue){
+        Node node=new Node();
+        node.value=nodeValue;
+        node.next=null;
+        head=node;
+        tail=node;
+        size=1;
+    }
+    
+    public void insertion(int nodeValue){
+        Node newNode=new Node();
+        newNode.value=nodeValue;
+        newNode.next=null;
+        tail.next=newNode;
+        tail=newNode;
+        size++;
+    }
+    
+    public void traversal(){
+        Node temp=head;
+        for(int i=0;i<size;i++){
+            System.out.print(temp.value);
+            if(i!=size-1){
+                System.out.print("->");
+            }
+            temp=temp.next;
+        }
+    }
+    
+}
+
+class Middle{
+    public int middleElement(LinkedList ll){
+        int len=ll.size;
+        Node temp=ll.head;
+        if(len%2==0){
+            int n=(len/2)+1;
+            
+            for(int i=0;i<n-1;i++){
+                temp=temp.next;
+            }
+            // return temp.value;
+        }else{
+            int n=(len+1)/2;
+            
+            for(int i=0;i<n-1;i++){
+                temp=temp.next;
+            }
+        }
+        return temp.value;
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        LinkedList ll=new LinkedList();
+        ll.creation(1);
+        ll.insertion(2);
+        ll.insertion(3);
+        ll.insertion(4);
+        ll.insertion(5);
+        ll.insertion(6);
+        ll.insertion(7);
+        ll.insertion(8);
+       
+        // ll.traversal();
+        Middle m=new Middle();
+        int data=m.middleElement(ll);
+        
+        System.out.println(data);
+    }
+}

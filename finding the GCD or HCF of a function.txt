@@ -1,0 +1,13 @@
+public class Solution {
+    public static int calcGCD(int n, int m){
+        // Write your code here.
+        int res=Math.min(n, m);
+        while(res>0){
+            if(n%res==0 && m%res==0){
+                break;
+            }
+            res--;
+        }
+        return res;
+    }
+}

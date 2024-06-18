@@ -1,0 +1,26 @@
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        int n=height(root);
+        if(n==1){
+            return true;
+        }
+        return false;
+    }
+    public int height(TreeNode root){
+        if(root==null){
+            return 1;
+        }
+
+        int lheight=height(root.left);
+        int rheight=height(root.right);
+        if(lheight>rheight){
+            System.out.println(lheight);
+        }else{
+            System.out.println(rheight);
+        }
+        if(Math.abs(lheight-rheight)>1){
+            return -1;
+        }
+        return 1;
+    }
+}

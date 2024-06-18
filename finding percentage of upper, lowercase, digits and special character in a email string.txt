@@ -1,0 +1,40 @@
+import java.lang.*;
+import java.util.*;
+
+public class Main
+{
+    public static void percentageFunction(char[] arr){
+        int len=arr.length;
+        float upperCase=0;
+        float lowerCase=0;
+        float digits=0;
+        float SpecialChar=0;
+        for(int i=0;i<len;i++){
+            if(arr[i]>='A' && arr[i]<='Z'){
+                upperCase++;
+            }
+            else if(arr[i]>='a' && arr[i]<='z'){
+                lowerCase++;
+            }
+            else if(Character.isDigit(arr[i])){
+                digits++;
+            }else{
+                SpecialChar++;
+            }
+        }
+        
+        System.out.println((upperCase/len)*100);
+        System.out.println((lowerCase/len)*100);
+        System.out.println((digits/len)*100);
+        System.out.println((SpecialChar/len)*100);
+    }
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    String email=sc.next();
+	    
+	    char[] emailArr=email.toCharArray();
+	   // int len=emailArr.length;
+	    
+	    percentageFunction(emailArr);
+	}
+}

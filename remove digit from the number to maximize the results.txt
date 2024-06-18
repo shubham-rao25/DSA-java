@@ -1,0 +1,20 @@
+class Solution {
+    public String removeDigit(String number, char digit) {
+        ArrayList<Integer> ar=new ArrayList<>();
+        int pos=number.indexOf(digit);
+        while(pos!=-1){
+            ar.add(pos);
+            pos=number.indexOf(digit,pos+1);
+        }
+
+        String max="0";
+        for(int i=0;i<ar.size();i++){
+            StringBuilder sb=new StringBuilder(number);
+            sb.deleteCharAt(ar.get(i));
+            if(sb.toString().compareTo(max)>0){
+                max=sb.toString();
+            }
+        }
+        return max;
+    }
+}
