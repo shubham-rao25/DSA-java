@@ -1,1 +1,3 @@
-this folder consist of all the DSA question done so Far from range of topics covered
+This repository consist of all the DSA question done so Far from range of topics covered
+
+--
