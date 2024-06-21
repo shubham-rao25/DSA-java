@@ -1,0 +1,47 @@
+//solving using memoization(top-down) approach similar to recursion but with storing of values in a dp array
+
+import java.util.*;
+import java.lang.*;
+public class Main{
+    
+    public static int fib(int n){
+        int[] dp=new int[n+1]; //step-1 declaring the 1D dp array to store the results
+        Arrays.fill(dp,-1);  //filling the array with -1
+        if(n<=1){    //setting the base condition
+            return n;
+        }
+        
+        if(dp[n]!=-1){   //step-2 checking if the answer is already present in the dp array
+            return dp[n];
+        }
+        return dp[n]=fib(n-1)+fib(n-2);  //step-3 storing of the answer for each index 
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        
+        int ans=fib(n);
+        System.out.println(ans);
+    }
+}
+
+
+
+//solving the fibonacci number problem using tabulation(bottom -up approach)
+
+//solving the question using dynamic programming;
+
+class Solution {
+    public int fib(int n) {
+        int[] dp=new int[n+1];
+        dp[0]=0;
+        dp[1]=1;
+
+        for(int i=2;i<=n;i++){
+            dp[i]=dp[i-1]+dp[i-2];  //tabulation where you move from base case to solution
+        }
+
+        return dp[n];
+        
+    }
+}
