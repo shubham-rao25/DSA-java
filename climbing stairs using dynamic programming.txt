@@ -1,0 +1,56 @@
+class Solution {
+    public int climbStairs(int n) {
+        // with tabulation the space and time compexity of the code is O(n) and O(n) resp.
+
+        // int[] dp=new int [n+1];
+        // if(n==1||n==2){
+        //     return n;
+        // }
+        // dp[1]=1;
+        // dp[2]=2;
+        // for(int i=3;i<=n;i++){
+        //     dp[i]=dp[i-1]+dp[i-2];
+        // }
+        // return dp[n];
+
+
+        //we will use memoization method for the following code i.e. similar to recursion.
+        //this will ultimately exceed our time limit.
+        // int [] dp=new int[n+1];
+        // Arrays.fill(dp,-1); 
+        // if(n==1 || n==2){
+        //     return dp[n]=n;
+        // }
+        // if(n==0){
+        //     return dp[n]=n+1;
+        // }
+
+        // if(dp[n]!=-1){
+        //     return dp[n];
+        // }
+        // return dp[n]=climbStairs(n-1)+climbStairs(n-2);
+
+        //we can use recursion as well
+        // but recursion exceeds the time limit as well
+
+        // if(n==1|| n==2){
+        //     return n;
+        // }
+        // return  climbStairs(n-1)+climbStairs(n-2);
+
+
+        //we can use a simple method which takes a constant space complexity and O(n) time complexity
+
+        int prev=2;
+        int prev2=1;
+        if(n==1||n==2){
+            return n;
+        }
+        for(int i=3;i<=n;i++){
+            int curi=prev+prev2;
+            prev2=prev;
+            prev=curi;
+        }
+        return prev;
+    }
+}
